@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>HomePage</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">FakturON</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Użytkownik<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/user/edit">Edytuj profil</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Faktury<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/user/invoice/new">Nowa faktura</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Kontrahenci<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/user/company/load">Przeglądaj listę odbiorców</a></li>
+							<li><a href="/user/company/add">Dodaj nowego odbiorcę</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+							Sign Up</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h2>Wystawione faktury</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Lp.</th>
+					<th>Nazwa</th>
+					<th>Odbiorca</th>
+					<th>Wartość netto</th>
+					<th>Wartość brutto</th>
+					<th>Data wystawienia</th>
+					<th>Płatność</th>
+					<th>Akcja</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="invoice,stat : ${invoices}">
+					<tr>
+						<td th:text="${stat.index + 1}"></td>
+						<td th:text="${invoice.name}"></td>
+						<td th:text="${invoice.company?.companyName}"></td>
+						<td th:text="${invoice.netValue}"></td>
+						<td th:text="${invoice.grossValue}"></td>
+						<td th:text="${invoice.createdAt}"></td>
+						<td th:text="${invoice.payment}"></td>
+						<td><a th:href="@{'/user/invoice/edit/' + ${invoice.id}}">Edycja</td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

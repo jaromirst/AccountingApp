@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Profil użytkownika</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="@{/user/edit}"
+					th:action="@{/user/edit}" th:object="${user}" method="post"
+					class="form-horizontal" role="form">
+					<h2>Edycja użytkownika</h2>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Nazwa firmy:
+							<label th:if="${#fields.hasErrors('nameOfMyComapny')}"
+								th:errors="*{nameOfMyComapny}" class="validation-message"></label>
+							<input type="text" th:field="*{nameOfMyComapny}"
+								placeholder="Nazwa firmy:" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Imię:
+							<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label> <input type="text"
+								th:field="*{name}" placeholder="Imię" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Nazwisko:
+							<label th:if="${#fields.hasErrors('lastName')}"
+								th:errors="*{lastName}" class="validation-message">:</label> <input
+								type="text" th:field="*{lastName}" placeholder="Nazwisko"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Ulica:
+							<label th:if="${#fields.hasErrors('street')}"
+								th:errors="*{street}" class="validation-message"></label> <input
+								type="text" th:field="*{street}" placeholder="Ulica"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Miasto:
+							<label th:if="${#fields.hasErrors('city')}" th:errors="*{city}"
+								class="validation-message"></label> <input type="text"
+								th:field="*{city}" placeholder="Miasto" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							Kod pocztowy:
+							<label th:if="${#fields.hasErrors('postCode')}"
+								th:errors="*{postCode}" class="validation-message"></label> <input
+								type="text" th:field="*{postCode}" placeholder="Kod pocztowy"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							NIP:
+							<label th:if="${#fields.hasErrors('taxNumber')}"
+								th:errors="*{taxNumber}" class="validation-message"></label> <input
+								type="text" th:field="*{taxNumber}" placeholder="NIP:"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Zapisz zmiany</button>
+						</div>
+					</div>
+
+					<span th:utext="${successMessage}"></span>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

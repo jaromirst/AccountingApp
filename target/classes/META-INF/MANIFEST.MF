@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: HOME
+Build-Jdk: 11.0.2
+Implementation-Title: AccountingProgram
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: pl.stachowski
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/AccountingProgram
+Created-By: Maven Integration for Eclipse
+
